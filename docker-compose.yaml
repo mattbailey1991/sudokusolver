@@ -1,0 +1,12 @@
+version: '3'
+
+services:
+  sudoku-solver:
+    image: 904058234644.dkr.ecr.eu-west-2.amazonaws.com/sudoku-solver:1.0
+    command: python manage.py run -h 0.0.0.0
+    volumes:
+      - ./services/sudoku-solver/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.dev
