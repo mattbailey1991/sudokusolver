@@ -1,0 +1,125 @@
+{% extends 'layout.html' %}
+
+{% block scripts %}
+<script type ="text/javascript" src="{{ url_for ('static', filename='sudoku.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+<div id = "puzzle-area">
+    <div id = "grid">
+        <div class="gridrow">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox top right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+            <div class = "gridrow">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox right" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+        <div class="gridrow">
+            <input class="gridbox left bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox left bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <input class="gridbox right bottom" input type="text" onkeypress="return /[0-9]/i.test(event.key)" maxlength="1" inputmode="numeric">
+            <br>
+        </div>
+    </div>
+</div>
+<div id = "submitform-area">
+    <form id="sudoku-form" onsubmit="return false">
+        <input id ="submit-button" class = "btn btn-light" type="submit" value="Go">
+    </form>
+</div>
+{% endblock %}
