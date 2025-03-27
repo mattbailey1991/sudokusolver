@@ -1,5 +1,6 @@
 import copy
 import sys
+import json
 
 class Square():
     def __init__(self, i, j, value = None):
@@ -57,24 +58,48 @@ class Square():
 
 class Sudoku():
     
-    def __init__(self, structure_file):
-        """Create a new sudoku by reading a structure.txt file"""
-        with open(structure_file) as f:
-            contents = f.read().splitlines()
-            self.height = len(contents)
-            self.width = max(len(line) for line in contents)
-            if not self.height == 9 or not self.width == 9:
-                raise Exception("Sudoku board must be 9 x 9")
+    def __init__(self, structure_data, file_type):
+        """Create a new sudoku by reading either a json file, dictionary or .txt file"""
+        # Validate file_type
+        if file_type not in ["text","json","dict"]:
+            raise ValueError("Input file type must be text, json, or dict")
         
-        # Create a set of squares
-        self.squares = set()
-        for i in range(9):
-            for j in range(9):
-                if not contents[i][j] == "#":
-                    sq = Square(i, j, int(contents[i][j]))
-                else:
-                    sq = Square(i, j)
-                self.squares.add(sq)
+        # Load .txt data
+        if file_type=="text":
+            with open(structure_data) as f:
+                contents = f.read().splitlines()
+                self.height = len(contents)
+                self.width = max(len(line) for line in contents)
+                if not self.height == 9 or not self.width == 9:
+                    raise Exception("Sudoku board must be 9 x 9")
+            
+            # Create a set of squares
+            self.squares = set()
+            for i in range(9):
+                for j in range(9):
+                    if not contents[i][j] == "#":
+                        sq = Square(i, j, int(contents[i][j]))
+                    else:
+                        sq = Square(i, j)
+                    self.squares.add(sq)
+
+        # Load .json data
+        if file_type in ["json", "dict"]:
+            # Load JSON
+            if file_type == "json":
+                contents = json.loads(structure_data)
+            else:
+                contents = structure_data
+            
+            # Create a set of squares
+            self.squares = set()
+            for i in range(9):
+                for j in range(9):
+                    if not contents[str(i)][str(j)] in ["", None]:
+                        sq = Square(i, j, int(contents[str(i)][str(j)]))
+                    else:
+                        sq = Square(i, j)
+                    self.squares.add(sq)                
         
         # Create a dictionary of neighbors for each square. A neighbor is any other square in the same column, row, or quadrant. 
         self.neighbors = dict()
@@ -93,7 +118,7 @@ class Sudoku():
             print()
 
     
-    def solve(self):
+    def solve(self, return_json=True):
         """Return a complete assignment of squares to values"""
         # Load the initial values into the assignment
         initial_assignment = dict()
@@ -113,10 +138,20 @@ class Sudoku():
 
         if result == None:
             print("No solution")
+            return 9999
+        
         else:
-            self.print(result)
-
-        return result
+            if return_json==True:
+                result_dict = {}
+                for i in range(9):
+                    result_dict[i] = {}
+                for var, val in result.items():
+                    result_dict[var.i][var.j] = val 
+                return json.dumps(result_dict, sort_keys=True)
+            
+            else:
+                self.print(result)
+                return result
     
     def ac3(self, squares = None):
         queue = {}
