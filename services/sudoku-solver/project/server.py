@@ -23,6 +23,7 @@ def sudoku():
         result = sudoku.solve()
         return jsonify({"solution": result})
 
+
 @app.route("/saved-puzzles")
 def saved_puzzles():
     """Provides a list of saved puzzles"""

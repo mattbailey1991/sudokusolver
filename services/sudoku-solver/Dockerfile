@@ -6,3 +6,5 @@ RUN pip install --upgrade pip
 COPY ./requirements.txt /usr/src/app/requirements.txt
 RUN pip install -r requirements.txt
 COPY . /usr/src/app/
+ENV FLASK_APP=project/server.py
+CMD ["python","manage.py","run"]
